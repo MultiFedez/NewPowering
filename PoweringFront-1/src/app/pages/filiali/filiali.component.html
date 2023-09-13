@@ -1,0 +1,38 @@
+<h1 class="text-center mb-5">Lista Filiali</h1>
+
+<div class="container card-group mb-2 " *ngFor="let filiale of filiali">
+  <div class="row card border border-dark ">
+    <div class="card-body col-sm">
+      <h5 class="card-title">FILIALE</h5>
+      <p class="card-text">Indirizzo : {{filiale.indirizzo}}</p>
+      <p class="card-text">Città : {{filiale.citta}}</p>
+      <p class="card-text">Cap : {{filiale.cap}}</p>
+
+      <button [routerLink]="['/']" class="btn btn-primary ">torna alla Home</button>
+      <button class="btn btn-danger " (click)="deleteFiliale(filiale.id)">Elimina</button>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <form [formGroup]="form" class="form-control mt-5 bg-secondary">
+    <p>Crea Filiale :</p>
+    <div>
+      <label for="nome">Indirizzo</label>
+      <input type="text" class="form-control" name="indirizzo" placeholder="Inserisci l'indirizzo" formControlName="indirizzo">
+    </div>
+    <div>
+      <label for="description">Città</label>
+      <input type="text" class="form-control" name="citta" placeholder="Inserisci la Città" formControlName="citta">
+    </div>
+    <div>
+      <label for="description">Cap</label>
+      <input type="text" class="form-control" name="cap" placeholder="Inserisci il Cap"formControlName="cap">
+    </div>
+    <div class="mt-3">
+      <button [disabled]="form.invalid" class="btn btn-primary" (click)="CreaFiliale()">Crea</button>
+      <button type="button" class="btn btn-primary ms-2" (click)="onRefresh()">Aggiorna</button>
+      <p>Dopo aver compilato il form e cliccato Crea, premere il tasto Aggiorna per visualizzare le modifiche</p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,39 @@
+<h1 class="text-center mb-5">Lista Automezzi</h1>
+
+<div class="container card-group mb-2 " *ngFor="let automezzo of automezzi">
+  <div class="row card border border-dark ">
+    <div class="card-body col-sm">
+      <h5 class="card-title">AUTOMEZZO</h5>
+      <p class="card-text">Targa : {{automezzo.targa}}</p>
+      <p class="card-text">Marca : {{automezzo.marca}}</p>
+      <p class="card-text">Modello : {{automezzo.modello}}</p>
+
+      <button [routerLink]="['/']" class="btn btn-primary ">torna alla Home</button>
+      <button class="btn btn-danger " (click)="deleteAutomezzo(automezzo.id)">Elimina</button>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <form [formGroup]="form" class="form-control mt-5 bg-secondary">
+    <p>Crea Automezzo :</p>
+    <div>
+      <label for="nome">Targa</label>
+      <input type="text" class="form-control" name="targa" placeholder="Inserisci la Targa" formControlName="targa">
+    </div>
+    <div>
+      <label for="description">Marca</label>
+      <input type="text" class="form-control" name="marca" placeholder="Inserisci la Marca" formControlName="marca">
+    </div>
+    <div>
+      <label for="description">Modello</label>
+      <input type="text" class="form-control" name="modello" placeholder="Inserisci il Modello"
+        formControlName="modello">
+    </div>
+    <div class="mt-3">
+      <button [disabled]="form.invalid" class="btn btn-primary" (click)="CreaAutomezzo()">Crea</button>
+      <button type="button" class="btn btn-primary ms-2" (click)="onRefresh()">Aggiorna</button>
+      <p>Dopo aver compilato il form e cliccato Crea, premere il tasto Aggiorna per visualizzare le modifiche</p>
+    </div>
+  </form>
+</div>
